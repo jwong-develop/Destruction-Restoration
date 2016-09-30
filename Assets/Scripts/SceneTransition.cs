@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour {
+
+    public String targetScene;
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +16,8 @@ public class SceneTransition : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnTriggerEnter(Collider other) {
+        SceneManager.LoadScene(targetScene);
+    }
 }

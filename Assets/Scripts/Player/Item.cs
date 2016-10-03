@@ -13,12 +13,10 @@ public class Item : MonoBehaviour {
 	void Update () {
 	
 	}
-    public void AddItem()
-    {
+    public void AddItem() {
         quantity++;
     }
-    public string ViewText()
-    {
+    public string ViewText() {
         return flavorText;
     }
     public void Effect() { }

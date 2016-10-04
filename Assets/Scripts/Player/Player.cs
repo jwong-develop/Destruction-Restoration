@@ -4,6 +4,8 @@ using System.Collections;
 public class Player : MonoBehaviour {
     protected string horizontal = "Horizontal"; 
     protected string vertical = "Vertical";
+    protected string attack = "Attack";
+    protected string defense = "Defense";
     private bool isDead = false;
     private int hp = 20;
     private int maxHP = 20;
@@ -31,6 +33,11 @@ public class Player : MonoBehaviour {
             tempPosition.x += movementSpeed * moveHorizontal * Time.deltaTime;
             tempPosition.y += movementSpeed * moveVertical * Time.deltaTime;
             transform.position = tempPosition;
+            if (Input.GetButtonDown(attack)) {
+                AttackSpell();
+            }else if (Input.GetButtonDown(defense)) {
+                DefenseSpell();
+            }
         }
     }
     public void Damage(int damage) {
@@ -40,10 +47,10 @@ public class Player : MonoBehaviour {
             isDead = true;
         }
     }
-    public void IncreaseHealth() {
-        maxHP += maxHP / 4;
+    public void IncreaseStats(int multiplyer) {
+        maxHP += maxHP / multiplyer;
+        maxMP += maxMP / multiplyer;
     }
-    public void IncreaseMP() {
-        maxMP += maxMP / 4;
-    }
+    virtual public void AttackSpell() { }
+    virtual public void DefenseSpell() { }
 }
